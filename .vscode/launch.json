@@ -1,0 +1,59 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'media-order-core'",
+      "cargo": {
+        "args": ["test", "--no-run", "--lib", "--package=media-order-core"],
+        "filter": {
+          "name": "media-order-core",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}/core"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'media-order-core'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=media-order-core",
+          "--package=media-order-core"
+        ],
+        "filter": {
+          "name": "media-order-core",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}/core"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug benchmark 'video'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bench=video",
+          "--package=media-order-core"
+        ],
+        "filter": {
+          "name": "video",
+          "kind": "bench"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
