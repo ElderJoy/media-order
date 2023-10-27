@@ -1,5 +1,5 @@
 [package]
-name = "imdb"
+name = "media-order-imdb"
 version = "0.1.0"
 authors = ["Dmitry Blinov <dblinov76@gmail.com>"]
 edition = "2021"
@@ -9,3 +9,6 @@ license = "MIT"
 
 [dependencies]
 flate2 = "1"
+log = {version = "0.4", features = ["std"]}
+nom = "7"
+simple_logger = "4"
