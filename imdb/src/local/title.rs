@@ -19,26 +19,22 @@ pub struct Title {
 	pub is_original_title: bool,
 }
 
-pub fn parse_gzip_file(file_name: &str) -> Vec<Title> {
-	let file = std::fs::File::open(file_name).unwrap();
+pub fn parse_gzip_file(file_path: &std::path::Path) -> Vec<Title> {
+	let file = std::fs::File::open(file_path).unwrap();
 	let reader = BufReader::new(file);
 	let gzip = flate2::read::GzDecoder::new(reader);
 
-	let mut titles = Vec::new();
-	for line in BufReader::new(gzip).lines().flatten() {
-		debug!("{}", line);
-		match title(&line) {
-			Ok((_, title)) => {
+	BufReader::new(gzip)
+		.lines()
+		.flatten()
+		.filter_map(|line| {
+			debug!("{}", line);
+			title(&line).ok().map(|(_, title)| {
 				debug!("{:#?}", &title);
-				titles.push(title);
-			}
-			Err(e) => {
-				debug!("Error parsing imdb title file: {}", e);
-			}
-		}
-	}
-
-	titles
+				title
+			})
+		})
+		.collect()
 }
 
 fn title(input: &str) -> IResult<&str, Title> {

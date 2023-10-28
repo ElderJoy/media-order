@@ -1,11 +1,11 @@
 {
-  "rust-analyzer.linkedProjects": ["./Cargo.toml"],
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,
     "source.fixAll": true
   },
+  "rust-analyzer.linkedProjects": ["./Cargo.toml"],
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true,

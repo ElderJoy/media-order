@@ -5,8 +5,9 @@ use crate::local::title;
 #[test]
 fn parse_gzip_title() {
 	SimpleLogger::new().init().unwrap();
-	println!("PWD: {:?}", std::env::current_dir().unwrap());
-	let titles = title::parse_gzip_file("./imdb/src/tests/local/title.akas.tsv.gz");
+	let file_path =
+		std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("src/tests/local/title.akas.tsv.gz");
+	let titles = title::parse_gzip_file(&file_path);
 
 	assert_eq!(titles.len(), 772);
 	assert_eq!(titles[0].title_id, "13522842");
