@@ -2,5 +2,6 @@
 resolver = "2"
 members = [
     "core",
-    "imdb"
+    "imdb",
+    "imdb/migration"
 ]

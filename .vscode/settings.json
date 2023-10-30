@@ -5,7 +5,13 @@
     "source.organizeImports": true,
     "source.fixAll": true
   },
-  "rust-analyzer.linkedProjects": ["./Cargo.toml"],
+  "rust-analyzer.linkedProjects": [
+    "./Cargo.toml",
+    "./imdb/migration/Cargo.toml",
+    "./imdb/migration/Cargo.toml",
+    "./imdb/migration/Cargo.toml",
+    "./imdb/migration/Cargo.toml"
+  ],
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true,

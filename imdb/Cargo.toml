@@ -11,4 +11,5 @@ license = "MIT"
 flate2 = "1"
 log = {version = "0.4", features = ["std"]}
 nom = "7"
+sea-orm = { version = "0.12", default-features = false, features = [ "sqlx-sqlite", "macros", "debug-print", "mock" ] }
 simple_logger = "4"
