@@ -8,8 +8,12 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+async-trait = "0.1"
 flate2 = "1"
 log = {version = "0.4", features = ["std"]}
 nom = "7"
 sea-orm = { version = "0.12", default-features = false, features = [ "sqlx-sqlite", "macros", "debug-print", "mock" ] }
+sea-orm-migration = { version = "0.12", default-features = false, features = [ "runtime-tokio-rustls", "sqlx-sqlite" ] }
 simple_logger = "4"
+thiserror = "1"
+tokio = {version = "1", features = ["full"]}
