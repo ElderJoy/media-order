@@ -6,6 +6,9 @@ use nom::{
 	bytes::complete::{tag, take_until, take_while_m_n},
 	IResult,
 };
+use sea_orm::{ActiveValue, EntityTrait};
+
+use crate::local::entities::titles;
 
 #[derive(Debug)]
 pub struct Title {
@@ -17,6 +20,16 @@ pub struct Title {
 	pub types: Option<String>,
 	pub attributes: Option<String>,
 	pub is_original_title: bool,
+}
+
+pub async fn fill_title_akas_table(db: &sea_orm::DatabaseConnection, id: i32) -> Result<(), sea_orm::DbErr> {
+	let title = titles::ActiveModel {
+		title: ActiveValue::Set("test".to_owned()),
+		id: ActiveValue::Set(id),
+	};
+
+	titles::Entity::insert(title).exec(db).await?;
+	Ok(())
 }
 
 pub fn parse_gzip_file(file_path: &std::path::Path) -> Vec<Title> {

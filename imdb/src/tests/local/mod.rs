@@ -19,3 +19,15 @@ fn parse_gzip_title() {
 	assert_eq!(titles[0].attributes, None);
 	assert_eq!(titles[0].is_original_title, false);
 }
+
+#[tokio::test]
+async fn fill_title_akas_table() {
+	SimpleLogger::new().init().unwrap();
+	let db = crate::local::create_database("test_imdb").await.unwrap();
+	let _ = title::fill_title_akas_table(&db, 1).await;
+	let result = title::fill_title_akas_table(&db, 2).await;
+	dbg!(&result);
+	assert!(result.is_ok());
+	let _ = db.close().await;
+	std::fs::remove_file("test_imdb.sqlite").unwrap();
+}

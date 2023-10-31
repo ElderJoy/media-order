@@ -5,6 +5,7 @@ use crate::errors::Result;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-	local::create_database().await?;
+	let res = local::create_database("local_imdb").await?;
+	dbg!(&res);
 	Ok(())
 }

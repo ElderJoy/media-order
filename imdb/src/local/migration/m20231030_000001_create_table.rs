@@ -13,6 +13,7 @@ impl MigrationTrait for Migration {
 					.if_not_exists()
 					.col(ColumnDef::new(Titles::Title).string().not_null())
 					.col(ColumnDef::new(Titles::Id).integer().not_null())
+					.primary_key(Index::create().col(Titles::Title).col(Titles::Id))
 					.to_owned(),
 			)
 			.await?;
